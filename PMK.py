@@ -50,11 +50,8 @@ def get_all_folder_names(directory):
     return [f for f in os.listdir(directory) if os.path.isdir(os.path.join(directory, f))]
 
 def write_to_mdfile(summary, category, title, paper_folder, paper_website):
-    notes1 = title +    ': ' + paper_website + '\n'
-    notes2 = summary
-
-    add_bullet_point(category, notes1, f"{paper_folder}/description.md")
-    add_bullet_point(title, notes2, f"{paper_folder}/{category}/{category}.md", prefix="Summary")
+    add_bullet_point(category, paper_website, f"{paper_folder}/description.md", prefix=title)
+    add_bullet_point(title, summary, f"{paper_folder}/{category}/{category}.md", prefix="Summary")
 
 def add_bullet_point(section, summary, mdfile_path, prefix=""):
     # Read the content of the file
